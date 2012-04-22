@@ -123,7 +123,7 @@ dialog =
 				
 				
 				
-				buttons += '<input type="button" ' + disabled + ' name="' + args.buttons[i].name + '" class="' + buttonClass + '" ' + buttonID + eventType + '="' + 'customDialogButtons[\'' + i +name + '\'](' + parameters + ')' + '" value="' + args.buttons[i].label + '"/>';
+				buttons += '<input type="button" ' + disabled + ' name="' + args.buttons[i].name + '" class="' + buttonClass + '" ' + buttonID + eventType + '="' + 'customDialogButtons[\'' + i +name + '\'](' + parameters + ')' + '" value="' + args.buttons[i].value + '"/>';
 			}
 		}
 		

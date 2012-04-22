@@ -27,14 +27,14 @@ dialog.createDialog(
 	height	 : '300px',
 	buttons  : [
 		{
-			label    : 'Ok',
+			value    : 'Ok',
 			callback : function()
 			{
 				alert('You just pressed Ok');
 			}
 		},
 		{
-			label : 'Cancel',
+			value : 'Cancel',
 			callback : function()
 			{
 				alert('You just pressed Cancel');
