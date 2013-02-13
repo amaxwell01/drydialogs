@@ -1,14 +1,10 @@
-dialog =
-{
-    closeDialog : function( name )
-    {
-        if( event.target.parentElement )
-        {
+var dialog = {
+    closeDialog : function( name ) {
+        if( event.target.parentElement ) {
             var fileID = event.target.parentElement.parentElement.dataset.fileid;
         }
         
-        if( !name )
-        {
+        if( !name ) {
             name = '';
         }
         
@@ -16,11 +12,9 @@ dialog =
     },
     
     // this is the standard dialog that will be used everywhere in the application
-    createDialog : function( args )
-    {
+    createDialog : function( args ) {
         var name = '';
-        if( args.name )
-        {
+        if( args.name ) {
             name = args.name;
         }
         
@@ -36,8 +30,7 @@ dialog =
         }
         
         var dataAttributes = '';
-        if( args.dataAttributes )
-        {
+        if( args.dataAttributes ) {
             for( var i = 0; i < args.dataAttributes.length; i++ )
             {
                 if( args.dataAttributes[i] )
@@ -53,61 +46,50 @@ dialog =
         }
         
         var headerClass = '';
-        if( args.headerClass )
-        {
+        if( args.headerClass ) {
             headerClass = 'class="' + args.headerClass + '"';
         }
         
         // FIXME: if there is no title, place the close button in the container
         var titleBody = '';
-        if( args.title )
-        {
+        if( args.title ) {
             titleBody = '<div id="' + name +
             'CustomDialogHeader"' + headerClass + '><h2>' + args.title + '</h2>' +
             '<div id="customDialogClose"onclick="dialog.closeDialog(\'' +name + '\');">x</div></div>';
         }
         
-        if( args.textBody )
-        {
+        if( args.textBody ) {
             body = '<div id="' + name + 'DialogText">' + args.textBody + '</div>';
         }
         
-        if( args.htmlBody )
-        {
+        if( args.htmlBody ) {
             body = args.htmlBody;
         }
         
         var bodyClass;
-        if( args.bodyClass )
-        {
+        if( args.bodyClass ) {
             bodyClass = args.bodyClass;
         }
-        else
-        {
+        else {
             bodyClass = 'customDialogBody';
         }
 		
-		if( args.buttons )
-		{
+		if( args.buttons ) {
 			var buttons = '';
 
-			for( var i = 0; i < args.buttons.length; i++ )
-			{
+			for( var i = 0; i < args.buttons.length; i++ ) {
 				var disabled = '';
 				var buttonClass = '';
-				if( args.buttons[i].disabled )
-				{
+				if( args.buttons[i].disabled ) {
 					disabled = 'disabled="disabled"';
 					buttonClass += 'disabled ';
 				}
 				
-				if( typeof(customDialogButtons) == 'undefined' )
-				{
+				if( typeof(customDialogButtons) == 'undefined' ) {
 					customDialogButtons = {};
 				}
 				
-				if( args.buttons[i].callback )
-				{
+				if( args.buttons[i].callback ) {
 					delete customDialogButtons[i + name];
 					customDialogButtons[i + name] = args.buttons[i].callback;
 				}
@@ -128,23 +110,19 @@ dialog =
 		}
 		
 		var buttonContainerClass;
-		if( typeof(args.buttonParameters) == 'undefined' )
-		{
+		if( typeof(args.buttonParameters) == 'undefined' ) {
 			args.buttonParameters = {};
 		}
 		
-		if( args.buttonParameters.containerClass )
-		{
+		if( args.buttonParameters.containerClass ) {
 			buttonContainerClass = args.buttonParameters.containerClass;
 		}
-		else
-		{
+		else {
 			buttonContainerClass = 'customDialogButtonContainer';
 		}
 		
 		var buttonElement = '';
-		if( typeof(args.buttons) != 'undefined' )
-		{
+		if( typeof(args.buttons) != 'undefined' ) {
 			buttonElement = '<div id="' + name + 'DialogButtons" class="' + buttonContainerClass +'">' + buttons + '</div>';
 		}
 		
@@ -160,50 +138,40 @@ dialog =
 		$('body').append( dialogBody.join('') );
 		
 		// SET THE STYLING FOR THE CUSTOM DIALOG
-		if( args.bodyClass )
-		{
+		if( args.bodyClass ) {
 			$('#' + name + 'CustomDialogBody').addClass( args.customDialogBodyClass );
 		}
-		else
-		{
+		else {
 			$('#' + name + 'CustomDialogBody').addClass( 'customDialogBody' );
 		}
 		
-		if( args.width )
-		{
+		if( args.width ) {
 			$('#' + name + 'CustomDialog').css( 'width', args.width );
 		}
-		else
-		{
+		else {
 			$('#' + name + 'CustomDialog').css( 'width', '400px' );
 		}
         
-        if( args.height )
-		{
+        if( args.height ) {
 			$('#' + name + 'CustomDialog').css( 'height', args.height );
 		}
         
-        if( args.maxHeight )
-		{
+        if( args.maxHeight ) {
 			$('#' + name + 'CustomDialog').css( 'max-height', args.maxHeight );
 		}
 		
-		if( args.position )
-		{
+		if( args.position ) {
 			$('#' + name + 'CustomDialog').css( 'position', args.position );
 		}
-		else
-		{
+		else {
 			$('#' + name + 'CustomDialog').css( 'position', 'absolute' );
 		}
         
-        if( args.backgroundColor )
-        {
+        if( args.backgroundColor ) {
             $('#' + name + 'DialogWrapper').css('background-color', args.backgroundColor );
         }
         
-        if( args.backgroundOpacity )
-        {
+        if( args.backgroundOpacity ) {
             // place opacity code here
             // needs to be RGBA since opacity will make all children have the opacity and not just the parent
             //$('#' + name + 'DialogWrapper');
@@ -212,52 +180,43 @@ dialog =
 		dialog.position( args );
         
         
-        if( args.initialLocation)
-        {
+        if( args.initialLocation) {
             // this is where the animation code will go
             // this controls where in the browser window the dialog will open from
             // this can be the center(default) or from the trigger location
             // 'center', // optional, default is center, but it can be 'trigger'
         }        
 		
-		if( args.success )
-		{
+		if( args.success ) {
 			args.success();
 		}
 	},
 	
-	position : function( args )
-	{
+	position : function( args ) {
 		var name = '';
-		if( args && args.name )
-		{
+		if( args && args.name ) {
 			name = args.name;
 		}
 	
-        if( args && args.top )
-		{
+        if( args && args.top ) {
 			customDialogTop = args.top;
 		}
-		else
-		{
+		else {
 			var windowHeightHalf = window.innerHeight / 2;
 			var customDialogHeight = $('#' + name + 'CustomDialog').height();
 			var customDialogHeightHalf = customDialogHeight / 2;
 			customDialogTop = windowHeightHalf - customDialogHeightHalf;
 			
-			if( customDialogTop < 0 )
-			{
+			if( customDialogTop < 0 ) {
 				customDialogTop = 50;
 			}
 		}
         
 		var customDialogLeft;
-		if( args && args.left )
-		{
+		if( args && args.left ) {
 			customDialogLeft = args.left;
 		}
-		else
-		{
+		else {
 			var windowWidthHalf = window.innerWidth / 2,
             customDialogWidth = $('#' + name + 'CustomDialog').width(),
             customDialogWidthHalf = customDialogWidth / 2,
