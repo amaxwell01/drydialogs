@@ -1,5 +1,6 @@
 Author: Andrew Maxwell
 Creation Date: 4/21/12
+Modified: 2/12/13
 Description: This is a fully customizable dialog/modal window which can be modified to your hearts desire
 
 Notes:
@@ -18,8 +19,7 @@ Simple Example:
 General Example:
 // ----------------
 
-    dialog.createDialog(
-    {
+    dialog.createDialog({
         name	 : 'HelloWorld',
         title	 : 'Hello World Custom Dialog',
         htmlBody : '<p>Hello World!</p>',
