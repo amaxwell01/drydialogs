@@ -56,6 +56,8 @@ var dialog = {
             titleBody = '<div id="' + name +
             'CustomDialogHeader"' + headerClass + '><h2>' + args.title + '</h2>' +
             '<div id="customDialogClose"onclick="dialog.closeDialog(\'' +name + '\');">x</div></div>';
+        } else {
+            titleBody = '<div id="customDialogClose"onclick="dialog.closeDialog(\'' +name + '\');">x</div>
         }
         
         if( args.textBody ) {
