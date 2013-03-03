@@ -9,6 +9,7 @@ var dialog = {
         }
         
         $('#' + name + 'DialogWrapper').remove();
+        $('#' + name + 'CustomDialog').remove();
     },
     
     // this is the standard dialog that will be used everywhere in the application
@@ -129,15 +130,15 @@ var dialog = {
         }
         
         // create a empty array and use it as a way to store a long string/variable which contains the custom dialog
-        var dialogBody = new Array(7);
-        dialogBody[0] = '<div id="' + name + 'DialogWrapper">';
-        dialogBody[1] = '<div id="' + name + 'CustomDialog" ' + dialogClass + ' ' + dataAttributes + ' data-name="' + name + '">';
-        dialogBody[2] = titleBody;
-        dialogBody[3] = '<div id="' + name + 'CustomDialogBody" class="' + bodyClass + '">' + body + '</div>';
-        dialogBody[4] = buttonElement;
-        dialogBody[5] = '</div>';
-        dialogBody[6] = '</div>';
-        $('body').append( dialogBody.join('') );
+        var dialogBody = '';
+        dialogBody += '<div id="' + name + 'DialogWrapper"></div>';
+        dialogBody += '<div id="' + name + 'CustomDialog" ' + dialogClass + ' ' + dataAttributes + ' data-name="' + name + '">';
+        dialogBody += titleBody;
+        dialogBody += '<div id="' + name + 'CustomDialogBody" class="' + bodyClass + '">' + body + '</div>';
+        dialogBody += buttonElement;
+        dialogBody += '</div>';
+        
+        $('body').append( dialogBody );
         
         // SET THE STYLING FOR THE CUSTOM DIALOG
         if( args.bodyClass ) {
