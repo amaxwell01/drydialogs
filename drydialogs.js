@@ -24,10 +24,12 @@ var dialog = {
         var close;
         args.close ? close = args.close : close = dialog.closeDialog;
         
-        var dialogClass = '';
+        var dialogClass = 'class="customDialog';
         if( args.dialogClass )
         {
-            dialogClass = 'class="customDialog ' + args.dialogClass + '"';
+            dialogClass += ' ' + args.dialogClass + '"';
+        } else {
+            dialogClass += '"';
         }
         
         var dataAttributes = '';
@@ -137,7 +139,7 @@ var dialog = {
         dialogBody += '<div id="' + name + 'CustomDialogBody" class="' + bodyClass + '">' + body + '</div>';
         dialogBody += buttonElement;
         dialogBody += '</div>';
-        
+
         $('body').append( dialogBody );
         
         // SET THE STYLING FOR THE CUSTOM DIALOG
@@ -233,7 +235,7 @@ var dialog = {
             var customDialogWidth = $('#' + name + 'CustomDialog').outerWidth();
             var customDialogWidthHalf = customDialogWidth / 2;
 
-            if ( customDialogWidth <= windowWidth ) {
+            if ( customDialogWidth >= windowWidth ) {
                 customDialogLeft = 0;
             } else {
                 customDialogLeft = windowWidthHalf - customDialogWidthHalf;
