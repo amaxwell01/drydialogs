@@ -189,6 +189,17 @@ var dialog = {
         if ( args.responsive ) {
             dialog.responsive();
         }
+
+        $('#' + name + 'CustomDialog').off('click');
+        $('#' + name + 'CustomDialog').on('click', function(event) {
+            event.stopPropagation();
+        });
+
+        // Close the modal when the wrapper is clicked
+        $('#' + name + 'DialogWrapper').off('click');
+        $('#' + name + 'DialogWrapper').on('click', function() {
+            dialog.closeDialog( name );
+        });
     },
     
     position : function( args ) {
