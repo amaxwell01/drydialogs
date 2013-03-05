@@ -149,11 +149,7 @@ var dialog = {
         else {
             $('#' + name + 'CustomDialogBody').addClass( 'customDialogBody' );
         }
-        
-        if( args.height ) {
-            $('#' + name + 'CustomDialog').css( 'height', args.height );
-        }
-        
+                
         if( args.maxHeight ) {
             $('#' + name + 'CustomDialog').css( 'max-height', args.maxHeight );
         }
