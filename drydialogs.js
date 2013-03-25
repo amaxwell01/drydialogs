@@ -25,7 +25,7 @@ var dialog = {
             name = args.name;
         }
 
-        if ( args.overlayClose ) {
+        if ( !args.overlayClose ) {
             overlayClose = args.overlayClose;
         }
         
