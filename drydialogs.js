@@ -15,16 +15,24 @@ var dialog = {
     // this is the standard dialog that will be used everywhere in the application
     createDialog : function( args ) {
         var name = '';
+        var overlayClose = true;
+        var dialogClass = 'class="customDialog';
+        var close;
+        var dataAttributes = '';
+        var headerClass = '';
+
         if( args.name ) {
             name = args.name;
+        }
+
+        if ( args.overlayClose ) {
+            overlayClose = args.overlayClose;
         }
         
         // if there is no name and no class set, assign the default class 'dialog', 'dialogHeader'
         // FIXME: update the close function to be global and use whatever function the user provides
-        var close;
         args.close ? close = args.close : close = dialog.closeDialog;
         
-        var dialogClass = 'class="customDialog';
         if( args.dialogClass )
         {
             dialogClass += ' ' + args.dialogClass + '"';
@@ -32,7 +40,6 @@ var dialog = {
             dialogClass += '"';
         }
         
-        var dataAttributes = '';
         if( args.dataAttributes ) {
             for( var i = 0; i < args.dataAttributes.length; i++ )
             {
@@ -48,7 +55,6 @@ var dialog = {
             }
         }
         
-        var headerClass = '';
         if( args.headerClass ) {
             headerClass = 'class="' + args.headerClass + '"';
         }
@@ -196,9 +202,12 @@ var dialog = {
 
         // Close the modal when the wrapper is clicked
         $('#' + name + 'DialogWrapper').off('click');
-        $('#' + name + 'DialogWrapper').on('click', function() {
-            dialog.closeDialog( name );
-        });
+
+        if ( overlayClose ) {
+            $('#' + name + 'DialogWrapper').on('click', function() {
+                dialog.closeDialog( name );
+            });
+        }
     },
     
     position : function( args ) {
