@@ -15,7 +15,7 @@ var dialog = {
     // this is the standard dialog that will be used everywhere in the application
     createDialog : function( args ) {
         var name = '';
-        var overlayClose = true;
+        var overlayClose = typeof(args.overlayClose) === 'boolean' && args.overlayClose === false ? args.overlayClose : true;
         var dialogClass = 'class="customDialog';
         var close;
         var dataAttributes = '';
@@ -23,10 +23,6 @@ var dialog = {
 
         if( args.name ) {
             name = args.name;
-        }
-
-        if ( !args.overlayClose ) {
-            overlayClose = args.overlayClose;
         }
         
         // if there is no name and no class set, assign the default class 'dialog', 'dialogHeader'
@@ -275,3 +271,4 @@ var dialog = {
         });
     }
 }
+ 
