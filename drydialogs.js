@@ -1,5 +1,5 @@
 var dialog = {
-    closeDialog : function( name ) {
+    closeDialog : function( name, event ) {
         if( event.target.parentElement ) {
             var fileID = event.target.parentElement.parentElement.dataset.fileid;
         }
@@ -60,9 +60,9 @@ var dialog = {
         if( args.title ) {
             titleBody = '<div id="' + name +
             'CustomDialogHeader"' + headerClass + '><h2>' + args.title + '</h2>' +
-            '<div id="customDialogClose"onclick="dialog.closeDialog(\'' +name + '\');">x</div></div>';
+            '<div id="customDialogClose"onclick="dialog.closeDialog(\'' +name + '\', event);">x</div></div>';
         } else {
-            titleBody = '<div id="customDialogClose" onclick="dialog.closeDialog(\'' +name + '\');">x</div>';
+            titleBody = '<div id="customDialogClose" onclick="dialog.closeDialog(\'' +name + '\', event);">x</div>';
         }
         
         if( args.textBody ) {
@@ -181,7 +181,7 @@ var dialog = {
             // this controls where in the browser window the dialog will open from
             // this can be the center(default) or from the trigger location
             // 'center', // optional, default is center, but it can be 'trigger'
-        }        
+        }
         
         if( args.success ) {
             args.success();
@@ -200,8 +200,8 @@ var dialog = {
         $('#' + name + 'DialogWrapper').off('click');
 
         if ( overlayClose ) {
-            $('#' + name + 'DialogWrapper').on('click', function() {
-                dialog.closeDialog( name );
+            $('#' + name + 'DialogWrapper').on('click', function(event) {
+                dialog.closeDialog( name, event );
             });
         }
     },
@@ -267,8 +267,7 @@ var dialog = {
          
             var timer = setTimeout( function() {
                 updatePosition();
-            }, 100 );    
+            }, 100 );
         });
     }
-}
- 
+};
