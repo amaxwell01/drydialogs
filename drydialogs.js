@@ -27,7 +27,7 @@ var drydialogs = {
         
         // if there is no name and no class set, assign the default class 'dialog', 'dialogHeader'
         // FIXME: update the close function to be global and use whatever function the user provides
-        close = args.close ? args.close : dialog.closeDialog;
+        close = args.close ? args.close : drydialogs.closeDialog;
         
         if( args.dialogClass )
         {
@@ -60,9 +60,9 @@ var drydialogs = {
         if( args.title ) {
             titleBody = '<div id="' + name +
             'CustomDialogHeader"' + headerClass + '><h2>' + args.title + '</h2>' +
-            '<div id="customDialogClose"onclick="dialog.closeDialog(\'' +name + '\', event);">x</div></div>';
+            '<div id="customDialogClose"onclick="drydialogs.closeDialog(\'' +name + '\', event);">x</div></div>';
         } else {
-            titleBody = '<div id="customDialogClose" onclick="dialog.closeDialog(\'' +name + '\', event);">x</div>';
+            titleBody = '<div id="customDialogClose" onclick="drydialogs.closeDialog(\'' +name + '\', event);">x</div>';
         }
         
         if( args.textBody ) {
@@ -173,7 +173,7 @@ var drydialogs = {
             //$('#' + name + 'DialogWrapper');
         }
         
-        dialog.position( args );
+        drydialogs.position( args );
         
         
         if( args.initialLocation) {
@@ -188,7 +188,7 @@ var drydialogs = {
         }
 
         if ( args.responsive ) {
-            dialog.responsive();
+            drydialogs.responsive();
         }
 
         $('#' + name + 'CustomDialog').off('click');
@@ -201,7 +201,7 @@ var drydialogs = {
 
         if ( overlayClose ) {
             $('#' + name + 'DialogWrapper').on('click', function(event) {
-                dialog.closeDialog( name, event );
+                drydialogs.closeDialog( name, event );
             });
         }
     },
@@ -255,7 +255,7 @@ var drydialogs = {
 
             $.each( dialogs, function( key, value ) {
                 name = $(value).attr('data-name');
-                dialog.position({ name: name });
+                drydialogs.position({ name: name });
             });
         };
 
