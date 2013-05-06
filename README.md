@@ -30,6 +30,7 @@ drydialogs.createDialog({
     height: '300px',
     overlayClose: true, // Boolean,
     responsive: true,
+    closeButton: false, // defaults to true
     buttons: [
         {
             value: 'Ok',

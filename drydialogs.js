@@ -17,6 +17,7 @@ var drydialogs = {
         var name = '';
         var overlayClose = typeof(args.overlayClose) === 'boolean' && args.overlayClose === false ? args.overlayClose : true;
         var dialogClass = 'class="drydialog';
+        var closeButton = typeof(args.closeButton) === 'boolean' && args.closeButton === false ? args.closeButton : true;
         var close;
         var dataAttributes = '';
         var headerClass = '';
@@ -58,11 +59,19 @@ var drydialogs = {
         // FIXME: if there is no title, place the close button in the container
         var titleBody = '';
         if( args.title ) {
-            titleBody = '<div id="' + name +
-            '_drydialogheader"' + headerClass + '><h2>' + args.title + '</h2>' +
-            '<div id="customDialogClose"onclick="drydialogs.closeDialog(\'' +name + '\', event);">x</div></div>';
+            titleBody = '<div id="' + name + '_drydialogheader"' + headerClass + '><h2>' + args.title + '</h2>';
+
+            if ( closeButton ) {
+                titleBody += '<div id="customDialogClose"onclick="drydialogs.closeDialog(\'' +name + '\', event);">x</div>';
+            }
+
+            titleBody += '</div>';
         } else {
-            titleBody = '<div id="drydialogclose" onclick="drydialogs.closeDialog(\'' +name + '\', event);">x</div>';
+            if ( closeButton ) {
+                titleBody = '<div id="drydialogclose" onclick="drydialogs.closeDialog(\'' +name + '\', event);">x</div>';                
+            } else {
+                titleBody = '';
+            }
         }
         
         if( args.textBody ) {
