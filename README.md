@@ -28,7 +28,8 @@ drydialogs.createDialog({
     htmlBody: '<p>Hello World!</p>',
     width: '500px',
     height: '300px',
-    overlayClose: TRUE, // Boolean
+    overlayClose: true, // Boolean,
+    responsive: true,
     buttons: [
         {
             value: 'Ok',
