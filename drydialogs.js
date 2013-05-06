@@ -17,6 +17,7 @@ var drydialogs = {
         var name = '';
         var overlayClose = typeof(args.overlayClose) === 'boolean' && args.overlayClose === false ? args.overlayClose : true;
         var dialogClass = 'class="drydialog';
+        var wrapperClass = typeof(args.wrapperClass) !== 'undefined' ? args.wrapperClass : '';
         var closeButton = typeof(args.closeButton) === 'boolean' && args.closeButton === false ? args.closeButton : true;
         var close;
         var dataAttributes = '';
@@ -144,7 +145,7 @@ var drydialogs = {
         
         // create a empty array and use it as a way to store a long string/variable which contains the custom dialog
         var dialogBody = '';
-        dialogBody += '<div id="' + name + '_drydialogwrapper"></div>';
+        dialogBody += '<div id="' + name + '_drydialogwrapper" class="' + wrapperClass + '"></div>';
         dialogBody += '<div id="' + name + '_drydialog" ' + dialogClass + ' ' + dataAttributes + ' data-name="' + name + '">';
         dialogBody += titleBody;
         dialogBody += '<div id="' + name + '_dryDialogBody" class="' + bodyClass + '">' + body + '</div>';

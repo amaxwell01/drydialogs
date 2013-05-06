@@ -24,13 +24,15 @@ General Example:
 ```javascript
 drydialogs.createDialog({
     name: 'HelloWorld',
+    dialogClass: '' // Any string that you want
     title: 'Hello World Custom Dialog',
     htmlBody: '<p>Hello World!</p>',
     width: '500px',
     height: '300px',
     overlayClose: true, // Boolean,
     responsive: true,
-    closeButton: false, // defaults to true
+    closeButton: false, // defaults to true,
+    wrapperClass: '' // Any string that you want
     buttons: [
         {
             value: 'Ok',
