@@ -1,7 +1,7 @@
-Author: Andrew Maxwell
-Creation Date: 4/21/12
-Modified: 5/6/13
-Description: This is a fully customizable dialog/modal window which can be modified to your hearts desire
+- Author: Andrew Maxwell
+- Creation Date: 4/21/12
+- Modified: 5/6/13
+- Description: This is a fully customizable dialog/modal window which can be modified to your hearts desire
 
 Notes:
 Right now the dialog will open in the exact middle of the viewport
