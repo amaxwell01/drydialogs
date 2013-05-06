@@ -60,8 +60,16 @@ var drydialogs = {
         
         // FIXME: if there is no title, place the close button in the container
         var titleBody = '';
-        if( args.title ) {
-            titleBody = '<div id="' + name + '_drydialogheader"' + headerClass + '><h2>' + args.title + '</h2>';
+        if( args.textTitle || args.htmlTitle ) {
+            titleBody = '<div id="' + name + '_drydialogheader" class="' + headerClass + '">';
+
+            if ( args.textTitle ) {
+                titleBody += '<h2>' + args.textTitle + '</h2>';
+            }
+
+            if ( args.htmlTitle ) {
+                titleBody += args.htmlTitle;
+            }
 
             if ( closeButton ) {
                 titleBody += '<button type="button" id="customDialogClose" class="' + closeClass + '" onclick="drydialogs.closeDialog(\'' +name + '\', event);">x</button>';

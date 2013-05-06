@@ -25,7 +25,10 @@ General Example:
 drydialogs.createDialog({
     name: 'HelloWorld',
     dialogClass: '' // Any string that you want
-    title: 'Hello World Custom Dialog',
+    textTitle: 'Hello World Custom Dialog', // you have to choose either textTitle or htmlTitle, htmlTitle is the final override
+    htmlTitle: '<h1>Hello World Custom Dialog</h2>',
+    headerClass: 'modal_header',
+    textBody: 'Hello World!', // you have to choose either textBody or htmlBody, htmlBody is the final override
     htmlBody: '<p>Hello World!</p>',
     width: '500px',
     height: '300px',
