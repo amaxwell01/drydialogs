@@ -8,8 +8,8 @@ var drydialogs = {
             name = '';
         }
         
-        $('#' + name + 'DialogWrapper').remove();
-        $('#' + name + 'CustomDialog').remove();
+        $('#' + name + '_drydialogwrapper').remove();
+        $('#' + name + '_drydialog').remove();
     },
     
     // this is the standard dialog that will be used everywhere in the application
@@ -59,10 +59,10 @@ var drydialogs = {
         var titleBody = '';
         if( args.title ) {
             titleBody = '<div id="' + name +
-            'CustomDialogHeader"' + headerClass + '><h2>' + args.title + '</h2>' +
+            '_drydialogheader"' + headerClass + '><h2>' + args.title + '</h2>' +
             '<div id="customDialogClose"onclick="drydialogs.closeDialog(\'' +name + '\', event);">x</div></div>';
         } else {
-            titleBody = '<div id="customDialogClose" onclick="drydialogs.closeDialog(\'' +name + '\', event);">x</div>';
+            titleBody = '<div id="drydialogclose" onclick="drydialogs.closeDialog(\'' +name + '\', event);">x</div>';
         }
         
         if( args.textBody ) {
@@ -78,7 +78,7 @@ var drydialogs = {
             bodyClass = args.bodyClass;
         }
         else {
-            bodyClass = 'customDialogBody';
+            bodyClass = 'drydialogbody';
         }
         
         if( args.buttons ) {
@@ -108,7 +108,7 @@ var drydialogs = {
                 
                 // TODO - If there is no button title, use the button value
                 var buttonTitle = args.buttons[i].title ? 'title="' + args.buttons[i].title + '" ' : '';
-                buttonClass += args.buttons[i].buttonClass ? args.buttons[i].buttonClass : 'customDialogButton';
+                buttonClass += args.buttons[i].buttonClass ? args.buttons[i].buttonClass : 'drydialogbutton';
                 
                 
                 
@@ -125,20 +125,20 @@ var drydialogs = {
             buttonContainerClass = args.buttonParameters.containerClass;
         }
         else {
-            buttonContainerClass = 'customDialogButtonContainer';
+            buttonContainerClass = 'drydialogbuttoncontainer';
         }
         
         var buttonElement = '';
         if( typeof(args.buttons) != 'undefined' ) {
-            buttonElement = '<div id="' + name + 'DialogButtons" class="' + buttonContainerClass +'">' + buttons + '</div>';
+            buttonElement = '<div id="' + name + '_drydialogbuttons" class="' + buttonContainerClass +'">' + buttons + '</div>';
         }
         
         // create a empty array and use it as a way to store a long string/variable which contains the custom dialog
         var dialogBody = '';
-        dialogBody += '<div id="' + name + 'DialogWrapper"></div>';
-        dialogBody += '<div id="' + name + 'CustomDialog" ' + dialogClass + ' ' + dataAttributes + ' data-name="' + name + '">';
+        dialogBody += '<div id="' + name + '_drydialogwrapper"></div>';
+        dialogBody += '<div id="' + name + '_drydialog" ' + dialogClass + ' ' + dataAttributes + ' data-name="' + name + '">';
         dialogBody += titleBody;
-        dialogBody += '<div id="' + name + 'CustomDialogBody" class="' + bodyClass + '">' + body + '</div>';
+        dialogBody += '<div id="' + name + '_dryDialogBody" class="' + bodyClass + '">' + body + '</div>';
         dialogBody += buttonElement;
         dialogBody += '</div>';
 
@@ -146,25 +146,25 @@ var drydialogs = {
         
         // SET THE STYLING FOR THE CUSTOM DIALOG
         if( args.bodyClass ) {
-            $('#' + name + 'CustomDialogBody').addClass( args.customDialogBodyClass );
+            $('#' + name + '_drydialogbody').addClass( args.customDialogBodyClass );
         }
         else {
-            $('#' + name + 'CustomDialogBody').addClass( 'customDialogBody' );
+            $('#' + name + '_drydialogbody').addClass( 'drydialogbody' );
         }
                 
         if( args.maxHeight ) {
-            $('#' + name + 'CustomDialog').css( 'max-height', args.maxHeight );
+            $('#' + name + '_drydialog').css( 'max-height', args.maxHeight );
         }
         
         if( args.position ) {
-            $('#' + name + 'CustomDialog').css( 'position', args.position );
+            $('#' + name + '_drydialog').css( 'position', args.position );
         }
         else {
-            $('#' + name + 'CustomDialog').css( 'position', 'absolute' );
+            $('#' + name + '_drydialog').css( 'position', 'absolute' );
         }
         
         if( args.backgroundColor ) {
-            $('#' + name + 'DialogWrapper').css('background-color', args.backgroundColor );
+            $('#' + name + 'drydialogwrapper').css('background-color', args.backgroundColor );
         }
         
         if( args.backgroundOpacity ) {
@@ -191,16 +191,16 @@ var drydialogs = {
             drydialogs.responsive();
         }
 
-        $('#' + name + 'CustomDialog').off('click');
-        $('#' + name + 'CustomDialog').on('click', function(event) {
+        $('#' + name + '_drydialog').off('click');
+        $('#' + name + '_drydialog').on('click', function(event) {
             event.stopPropagation();
         });
 
         // Close the modal when the wrapper is clicked
-        $('#' + name + 'DialogWrapper').off('click');
+        $('#' + name + 'drydialogwrapper').off('click');
 
         if ( overlayClose ) {
-            $('#' + name + 'DialogWrapper').on('click', function(event) {
+            $('#' + name + 'drydialogwrapper').on('click', function(event) {
                 drydialogs.closeDialog( name, event );
             });
         }
@@ -217,7 +217,7 @@ var drydialogs = {
         }
         else {
             var windowHeightHalf = window.innerHeight / 2;
-            var customDialogHeight = $('#' + name + 'CustomDialog').height();
+            var customDialogHeight = $('#' + name + '_drydialog').height();
             var customDialogHeightHalf = customDialogHeight / 2;
             customDialogTop = windowHeightHalf - customDialogHeightHalf;
             
@@ -233,7 +233,7 @@ var drydialogs = {
         else {
             var windowWidth = $(window).width();
             var windowWidthHalf = windowWidth / 2;
-            var customDialogWidth = $('#' + name + 'CustomDialog').outerWidth();
+            var customDialogWidth = $('#' + name + '_drydialog').outerWidth();
             var customDialogWidthHalf = customDialogWidth / 2;
 
             if ( customDialogWidth >= windowWidth ) {
@@ -243,14 +243,14 @@ var drydialogs = {
             }
         }
 
-        $('#' + name + 'CustomDialog').css( 'left', customDialogLeft );
-        $('#' + name + 'CustomDialog').css( 'top', customDialogTop );
+        $('#' + name + '_drydialog').css( 'left', customDialogLeft );
+        $('#' + name + '_drydialog').css( 'top', customDialogTop );
     },
 
     responsive: function() {
 
         var updatePosition = function() {
-            var dialogs = $('.customDialog');
+            var dialogs = $('.drydialog');
             var name;
 
             $.each( dialogs, function( key, value ) {
