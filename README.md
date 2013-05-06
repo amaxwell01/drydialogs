@@ -32,6 +32,7 @@ drydialogs.createDialog({
     overlayClose: true, // Boolean,
     responsive: true,
     closeButton: false, // defaults to true,
+    closeClass: '' // Any string that you want
     wrapperClass: '' // Any string that you want
     buttons: [
         {

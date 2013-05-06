@@ -19,6 +19,7 @@ var drydialogs = {
         var dialogClass = 'class="drydialog';
         var wrapperClass = typeof(args.wrapperClass) !== 'undefined' ? args.wrapperClass : '';
         var closeButton = typeof(args.closeButton) === 'boolean' && args.closeButton === false ? args.closeButton : true;
+        var closeClass = typeof(args.closeClass) !== 'undefined' ? args.closeClass : '';
         var close;
         var dataAttributes = '';
         var headerClass = '';
@@ -63,13 +64,13 @@ var drydialogs = {
             titleBody = '<div id="' + name + '_drydialogheader"' + headerClass + '><h2>' + args.title + '</h2>';
 
             if ( closeButton ) {
-                titleBody += '<div id="customDialogClose"onclick="drydialogs.closeDialog(\'' +name + '\', event);">x</div>';
+                titleBody += '<button type="button" id="customDialogClose" class="' + closeClass + '" onclick="drydialogs.closeDialog(\'' +name + '\', event);">x</button>';
             }
 
             titleBody += '</div>';
         } else {
             if ( closeButton ) {
-                titleBody = '<div id="drydialogclose" onclick="drydialogs.closeDialog(\'' +name + '\', event);">x</div>';                
+                titleBody = '<button type="button" id="drydialogclose" class="' + closeClass + '" onclick="drydialogs.closeDialog(\'' +name + '\', event);">x</button>';                
             } else {
                 titleBody = '';
             }
