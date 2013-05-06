@@ -142,7 +142,13 @@ var drydialogs = {
         dialogBody += buttonElement;
         dialogBody += '</div>';
 
-        $('body').append( dialogBody );
+        // Only create one modal if one does not exist
+        var dialog = $('#' + name + '_drydialog').length;
+        var dialogWrapper = $('#' + name + '_drydialogwrapper').length;
+
+        if ( !dialog && !dialogWrapper ) {
+            $('body').append( dialogBody );
+        }
         
         // SET THE STYLING FOR THE CUSTOM DIALOG
         if( args.bodyClass ) {
