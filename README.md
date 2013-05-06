@@ -4,7 +4,11 @@
 - Description: This is a fully customizable dialog/modal window which can be modified to your hearts desire
 
 Notes:
-Right now the dialog will open in the exact middle of the viewport
+- Right now the dialog will open in the exact middle of the viewport
+- If people ask for a non-jQuery version then I would be more than happen to look into it
+
+## Requirements
+- jQuery
 
 
 Simple Example:
