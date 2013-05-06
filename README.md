@@ -24,6 +24,7 @@ General Example:
 ```javascript
 drydialogs.createDialog({
     name: 'HelloWorld',
+    bodyClass: '' // Any string that you want
     dialogClass: '' // Any string that you want
     textTitle: 'Hello World Custom Dialog', // you have to choose either textTitle or htmlTitle, htmlTitle is the final override
     htmlTitle: '<h1>Hello World Custom Dialog</h2>',
