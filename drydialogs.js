@@ -1,4 +1,4 @@
-var dialog = {
+var drydialogs = {
     closeDialog : function( name, event ) {
         if( event.target.parentElement ) {
             var fileID = event.target.parentElement.parentElement.dataset.fileid;

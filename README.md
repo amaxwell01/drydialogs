@@ -13,7 +13,7 @@ Notes:
 
 Simple Example:
 ```javascript
-dialog.createDialog(
+drydialogs.createDialog(
 {
     textBody : 'Hello World!'
 });
@@ -22,7 +22,7 @@ dialog.createDialog(
 
 General Example:
 ```javascript
-dialog.createDialog({
+drydialogs.createDialog({
     name: 'HelloWorld',
     title: 'Hello World Custom Dialog',
     htmlBody: '<p>Hello World!</p>',
