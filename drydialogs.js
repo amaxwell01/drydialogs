@@ -27,7 +27,7 @@ var drydialogs = {
         
         // if there is no name and no class set, assign the default class 'dialog', 'dialogHeader'
         // FIXME: update the close function to be global and use whatever function the user provides
-        args.close ? close = args.close : close = dialog.closeDialog;
+        close = args.close ? args.close : dialog.closeDialog;
         
         if( args.dialogClass )
         {
