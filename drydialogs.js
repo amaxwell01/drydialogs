@@ -16,7 +16,7 @@ var drydialogs = {
     createDialog : function( args ) {
         var name = '';
         var overlayClose = typeof(args.overlayClose) === 'boolean' && args.overlayClose === false ? args.overlayClose : true;
-        var dialogClass = 'class="customDialog';
+        var dialogClass = 'class="drydialog';
         var close;
         var dataAttributes = '';
         var headerClass = '';
