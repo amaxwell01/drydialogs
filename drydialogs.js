@@ -189,7 +189,7 @@ var drydialogs = {
         }
         
         if( args.backgroundColor ) {
-            $('#' + name + 'drydialogwrapper').css('background-color', args.backgroundColor );
+            $('#' + name + '_drydialogwrapper').css('background-color', args.backgroundColor );
         }
         
         if( args.backgroundOpacity ) {
@@ -222,10 +222,10 @@ var drydialogs = {
         });
 
         // Close the modal when the wrapper is clicked
-        $('#' + name + 'drydialogwrapper').off('click');
+        $('#' + name + '_drydialogwrapper').off('click');
 
         if ( overlayClose ) {
-            $('#' + name + 'drydialogwrapper').on('click', function(event) {
+            $('#' + name + '_drydialogwrapper').on('click', function(event) {
                 drydialogs.closeDialog( name, event );
             });
         }
