@@ -61,7 +61,7 @@ var drydialogs = {
         // FIXME: if there is no title, place the close button in the container
         var titleBody = '';
         if( args.textTitle || args.htmlTitle ) {
-            titleBody = '<div id="' + name + '_drydialogheader" class="' + headerClass + '">';
+            titleBody = '<div id="' + name + '_drydialogheader"' + headerClass + '>';
 
             if ( args.textTitle ) {
                 titleBody += '<h2>' + args.textTitle + '</h2>';
@@ -242,9 +242,10 @@ var drydialogs = {
         }
         else {
             var windowHeightHalf = window.innerHeight / 2;
+            var scrollYOffset = window.scrollY;
             var customDialogHeight = $('#' + name + '_drydialog').height();
             var customDialogHeightHalf = customDialogHeight / 2;
-            customDialogTop = windowHeightHalf - customDialogHeightHalf;
+            customDialogTop = (windowHeightHalf - customDialogHeightHalf) + scrollYOffset;
             
             if( customDialogTop < 0 ) {
                 customDialogTop = 50;
