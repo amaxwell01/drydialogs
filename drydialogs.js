@@ -242,7 +242,7 @@ var drydialogs = {
         }
         else {
             var windowHeightHalf = window.innerHeight / 2;
-            var scrollYOffset = window.scrollY;
+            var scrollYOffset = (window.scrollY || window.pageYOffset);
             var customDialogHeight = $('#' + name + '_drydialog').height();
             var customDialogHeightHalf = customDialogHeight / 2;
             customDialogTop = (windowHeightHalf - customDialogHeightHalf) + scrollYOffset;
