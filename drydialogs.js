@@ -1,7 +1,9 @@
 var drydialogs = {
     closeDialog : function( name, event ) {
-        if( event.target.parentElement ) {
-            var fileID = $(event.target).parent().parent().attr('fileid');
+        var target = event && event.target ? event.target : window.event.srcElement;
+
+        if( target.parentElement ) {
+            var fileID = $(target).parent().parent().attr('fileid');
         }
         
         if( !name ) {
@@ -241,8 +243,8 @@ var drydialogs = {
             customDialogTop = args.top;
         }
         else {
-            var windowHeightHalf = window.innerHeight / 2;
-            var scrollYOffset = (window.scrollY || window.pageYOffset);
+            var windowHeightHalf = $(window).height() / 2;
+            var scrollYOffset = window.scrollY ? window.scrollY : window.pageYOffset ? window.pageYOffset : document.body.scrollTop ? document.body.scrollTop : 0;
             var customDialogHeight = $('#' + name + '_drydialog').height();
             var customDialogHeightHalf = customDialogHeight / 2;
             customDialogTop = (windowHeightHalf - customDialogHeightHalf) + scrollYOffset;
