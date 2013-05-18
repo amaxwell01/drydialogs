@@ -61,7 +61,7 @@ var drydialogs = {
         // FIXME: if there is no title, place the close button in the container
         var titleBody = '';
         if( args.textTitle || args.htmlTitle ) {
-            titleBody = '<div id="' + name + '_drydialogheader" class="' + headerClass + '">';
+            titleBody = '<div id="' + name + '_drydialogheader"' + headerClass + '>';
 
             if ( args.textTitle ) {
                 titleBody += '<h2>' + args.textTitle + '</h2>';
@@ -189,7 +189,7 @@ var drydialogs = {
         }
         
         if( args.backgroundColor ) {
-            $('#' + name + 'drydialogwrapper').css('background-color', args.backgroundColor );
+            $('#' + name + '_drydialogwrapper').css('background-color', args.backgroundColor );
         }
         
         if( args.backgroundOpacity ) {
@@ -222,10 +222,10 @@ var drydialogs = {
         });
 
         // Close the modal when the wrapper is clicked
-        $('#' + name + 'drydialogwrapper').off('click');
+        $('#' + name + '_drydialogwrapper').off('click');
 
         if ( overlayClose ) {
-            $('#' + name + 'drydialogwrapper').on('click', function(event) {
+            $('#' + name + '_drydialogwrapper').on('click', function(event) {
                 drydialogs.closeDialog( name, event );
             });
         }
@@ -242,9 +242,10 @@ var drydialogs = {
         }
         else {
             var windowHeightHalf = window.innerHeight / 2;
+            var scrollYOffset = window.scrollY;
             var customDialogHeight = $('#' + name + '_drydialog').height();
             var customDialogHeightHalf = customDialogHeight / 2;
-            customDialogTop = windowHeightHalf - customDialogHeightHalf;
+            customDialogTop = (windowHeightHalf - customDialogHeightHalf) + scrollYOffset;
             
             if( customDialogTop < 0 ) {
                 customDialogTop = 50;
