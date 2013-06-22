@@ -259,7 +259,7 @@ var drydialogs = {
             customDialogLeft = args.left;
         }
         else {
-            var windowWidth = $(window).width();
+            var windowWidth = $(document).width();
             var windowWidthHalf = windowWidth / 2;
             var customDialogWidth = $('#' + name + '_drydialog').outerWidth();
             var customDialogWidthHalf = customDialogWidth / 2;
