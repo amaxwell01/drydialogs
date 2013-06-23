@@ -141,7 +141,7 @@
                 dialogWrapperLength = $('#' + this.options.name + '_drydialogwrapper').length;
 
             // create a empty array and use it as a way to store a long string/variable which contains the custom dialog
-            dialogBody += '<div id="' + this.options.name + '_drydialogwrapper" class="' + this.options.wrapperClass + '"></div>';
+            dialogBody += '<div id="' + this.options.name + '_drydialogwrapper" class="drydialogwrapper ' + this.options.wrapperClass + '"></div>';
             dialogBody += '<div id="' + this.options.name + '_drydialog" class="drydialog ' + this.options.dialogClass + '" ' + dataAttributes + ' data-name="' + this.options.name + '">';
             dialogBody += titleBody;
             dialogBody += '<div id="' + this.options.name + '_dryDialogBody" class="drydialogbody ' + this.options.bodyClass + '">' + body + '</div>';
