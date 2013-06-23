@@ -7,13 +7,20 @@ Notes:
 - Right now the dialog will open in the exact middle of the viewport
 - If people ask for a non-jQuery version then I would be more than happen to look into it
 
-## Requirements
+## Requirements:
 - jQuery
 
+## Ignore these files / folders:
+- text.js (used for testing, but needs to be in the root folder for ease of use)
+- /assets* (ignore this folder as it is only used for tests shared code for examples)
+- /tests* (This includes all of the code for our tests, which helps ensure that we have a stable project)
+
+## Examples:
+- I've included a few examples on how to use dry dialogs, which have also been used for scoping out a new feature
 
 Simple Example:
 ```javascript
-drydialogs.createDialog(
+dry.dialog(
 {
     textBody : 'Hello World!'
 });
@@ -22,7 +29,7 @@ drydialogs.createDialog(
 
 General Example:
 ```javascript
-drydialogs.createDialog({
+dry.dialogs({
     name: 'HelloWorld',
     bodyClass: '' // Any string that you want
     dialogClass: '' // Any string that you want
