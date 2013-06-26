@@ -55,8 +55,6 @@
                     console.log( 'You supplied an option that is not supported: ' + option );
                 }
             }
-
-            console.dir( self.options );
         },
 
         _appendDialog: function( dialog) {
