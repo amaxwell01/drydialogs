@@ -27,5 +27,22 @@ define([
 
             expect( dialogContainer.is(':visible') ).toEqual( true );
         });
+
+        it('Close a simple dialog', function(){
+            var visible = true,
+                dialogContainer;
+
+            dry.dialog({
+                name: 'simple',
+                bodyText: 'Hello World!',
+                appendTo: '#sandbox'
+            });
+
+            dry.dialog.close( 'simple' );
+
+            dialogContainer = $('#simple_drydialog');
+
+            expect( dialogContainer.is(':visible') ).toEqual( false );
+        });
     });
 });
