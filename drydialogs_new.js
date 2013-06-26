@@ -194,15 +194,13 @@
             return data;
         },
 
-        closeDialog : function( name, event ) {
-            var target = event && event.target ? event.target : window.event.srcElement;
+        closeDialog : function( name ) {
 
-            if( target.parentElement ) {
-                var fileID = $(target).parent().parent().attr('fileid');
-            }
-
-            if( !name ) {
-                name = '';
+            if ( !name ) {
+                console.log( 'Please specify the dry dialog that you want to close' );
+                return false;
+            } else {
+                this.options.name = name;
             }
 
             $('#' + this.options.name + '_drydialogwrapper').remove();
@@ -261,7 +259,7 @@
 
             $('#' + this.options.name + '_drydialogclose').off('click');
             $('#' + this.options.name + '_drydialogclose').on('click', function(event) {
-                self.closeDialog( self.options.name, event );
+                self.closeDialog( self.options.name );
             });
 
             $('#' + this.options.name + '_drydialog').off('click');
@@ -271,12 +269,12 @@
 
             // Close the modal when the wrapper is clicked
             $('#' + this.options.name + '_drydialogwrapper').off('click', function( event ) {
-                self.closeDialog( self.options.name, event );
+                self.closeDialog( self.options.name );
             });
 
             if ( this.options.overlayClose ) {
                 $('#' + this.options.name + '_drydialogwrapper').on('click', function( event ) {
-                    self.closeDialog( self.options.name, event );
+                    self.closeDialog( self.options.name );
                 });
             }
         },
@@ -352,6 +350,10 @@
 
         // this is the standard dialog that will be used everywhere in the application
         return dialog.init( options );
+    };
+
+    dry.dialog.close = function( name ) {
+        return dialog.closeDialog( name );
     };
 
     window.dry = dry;
