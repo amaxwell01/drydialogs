@@ -29,7 +29,7 @@ dry.dialog(
 
 General Example:
 ```javascript
-dry.dialogs({
+dry.dialog({
     name: 'HelloWorld',
     bodyClass: '' // Any string that you want
     dialogClass: '' // Any string that you want
