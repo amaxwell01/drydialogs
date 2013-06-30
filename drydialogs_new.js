@@ -26,6 +26,7 @@
             closeButton: true,
             closeCallback: null,
             closeClass: '',
+            closeHTML: 'x',
             dataAttributes: '',
             dialogClass: '',
             headerClass: '',
@@ -127,7 +128,9 @@
             var closeButton = '';
 
             if ( this.options.closeButton ) {
-                closeButton += '<button type="button" id="' + this.options.name + '_drydialogclose" class="' + this.options.closeClass + '">x</button>';
+                closeButton += '<button type="button" id="' + this.options.name + '_drydialogclose" class="' + this.options.closeClass + '">';
+                closeButton += this.options.closeHTML;
+                closeButton += '</button>';
             }
 
             return closeButton;
