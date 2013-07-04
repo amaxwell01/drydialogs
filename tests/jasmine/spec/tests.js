@@ -44,5 +44,28 @@ define([
 
             expect( dialogContainer.is(':visible') ).toEqual( false );
         });
+
+        it('Does closeCallback work?', function(){
+            var self = this,
+                visible = true,
+                dialogContainer;
+
+            window.closeCallbackTest = false;
+            window.changeCloseCallbackValue = function() {
+                closeCallbackTest = true;
+            };
+
+            dry.dialog({
+                name: 'closeCallback',
+                bodyText: 'Hello World!',
+                appendTo: '#sandbox',
+                closeCallback: function() {
+                    window.changeCloseCallbackValue();
+                }
+            });
+
+            dry.dialog.close('closeCallback');
+            expect( window.closeCallbackTest ).toEqual( true );
+        });
     });
 });

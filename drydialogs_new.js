@@ -206,6 +206,10 @@
 
             $('#' + this.options.name + '_drydialogwrapper').remove();
             $('#' + this.options.name + '_drydialog').remove();
+
+            if ( this.options.closeCallback ) {
+                this.options.closeCallback();
+            }
         },
 
         init: function( args ) {

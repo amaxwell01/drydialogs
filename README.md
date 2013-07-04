@@ -42,6 +42,7 @@ dry.dialog({
     height: '300px',
     overlayClose: true, // Boolean,
     responsive: true,
+    closeCallback: function() {}, // Place the code that you want to execute in this function and it will be called when the close button event is triggered and finished
     closeButton: false, // defaults to true,
     closeClass: '' // Any string that you want
     wrapperClass: '' // Any string that you want
@@ -62,4 +63,9 @@ dry.dialog({
         }
     ]
 });
+```
+
+How to close a dialog externally
+```javascript
+dry.dialog.close('HelloWorld');
 ```
